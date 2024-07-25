@@ -1,0 +1,56 @@
+<div class="main-container bg-black bg-gradient p-2" id="main-container">
+  
+  <div class="form-container" id="form-container">
+    
+    <form #formData="ngForm" (ngSubmit)="updateRequest ? modifyData(formData) : uploadData(formData)" class="bg-success bg-gradient text-white bg-opacity-25 p-5 w-50 mx-auto rounded-5 needs-validation" id="form" novalidate>
+      
+      <div class="mb-3">
+        <label for="name" class="form-label fw-bold">Name</label>
+        <input type="text" class="form-control" id="name" autocomplete="off" name="name" [(ngModel)]="nameTemplate" #nameValid="ngModel" required pattern="^[a-zA-Z ]+$" [class.is-invalid]="nameValid.touched && nameValid.invalid">
+      </div>
+      
+      <div class="mb-3">
+        <label for="phone" class="form-label fw-bold">Mobile No.</label>
+        <input type="text" class="form-control" id="phone" autocomplete="off" name="phone" [(ngModel)]="phoneTemplate" #phoneValid="ngModel" required pattern="[6789][0-9]{9}" [class.is-invalid]="phoneValid.touched && phoneValid.invalid">
+      </div>
+      
+      <div class="mb-3">
+        <label for="email" class="form-label fw-bold">Email Address</label>
+        <input type="email" class="form-control" id="email" autocomplete="off" name="email" [(ngModel)]="emailTemplate" #emailValid="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="emailValid.touched && emailValid.invalid">
+      </div>
+      
+      <div class="text-center">
+        <button class="btn btn-primary m-2" type="submit" [class.disabled]="nameValid.invalid || phoneValid.invalid || emailValid.invalid"> {{updateRequest ? "Update" : "Submit"}}</button>
+        <button class="btn btn-danger m-2" type="reset" (click)="updateRequest = false; formData.reset()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="table-container mt-2 table-responsive" id="table-container">
+    <table class="table table-hover text-center align-middle w-50 mx-auto">
+      <thead>
+        <tr class="table-warning">
+          <th scope="col"></th>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Mobile No</th>
+          <th scope="col">Email Id</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let element of db.slice().reverse()">
+          <td><button (click)="deleteData(element)" class="btn btn-danger"><span class="material-symbols-outlined">delete</span></button></td>
+          <th scope="row" >{{element.id}}</th>
+          <td class="text-break">{{element.name}}</td>
+          <td class="text-break">{{element.phone}}</td>
+          <td class="text-break">{{element.email}}</td>
+          <td><button (click)="updateData(element)" class="btn btn-success">Update</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="copyright">
+    <p>All rights reserved to ASD Tiwari.</p>
+  </div>
+</div>
