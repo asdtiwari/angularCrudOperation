@@ -15,7 +15,8 @@ export class AppComponent {
   title = 'crudOperation';
 
   /* url of array of json object which is in present in json-server file */
-  url = "https://my-json-server.typicode.com/asdtiwari/angularCrudOperationJsonServer/persons";
+  url = "https://my-json-server.typicode.com/asdtiwari/angularCrudOperation/persons";
+
   
   /* to store the reference of json-server file */
   db: any;
