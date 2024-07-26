@@ -15,7 +15,9 @@ export class AppComponent {
   title = 'crudOperation';
 
   /* url of array of json object which is in present in json-server file */
-  url = "https://my-json-server.typicode.com/asdtiwari/angularCrudOperation/persons";
+  /* I have created a repo named angularCrudOperationJsonServer and Uploaded 
+  it to glitch.com and make share. So it is working as a json server for this application*/
+  url = "https://classy-repeated-universe.glitch.me/persons";
 
   
   /* to store the reference of json-server file */
